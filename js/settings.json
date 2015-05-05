@@ -7,7 +7,7 @@ settings = {
             name: "Bussey Building"
         },
         {
-            position: [51.494651, -0.05581],
+            position: {lat:51.494651, lng:-0.05581},
             name: "Southwark Park"
         }
     ]
