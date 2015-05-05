@@ -1,8 +1,12 @@
 sound_app = {};
 sound_app.music_markers = [];
-sound_app.current_music_distances = []
+sound_app.current_music_distances = [];
+sound_app.music_playing_now = [];
 
 sound_app.initialize = function() {
+    
+    sound_app.loadSounds();
+    
     // replace "toner" here with "terrain" or "watercolor"
     var layer = "watercolor";
     sound_app.map = new google.maps.Map(document.getElementById("map_container"), {
@@ -22,12 +26,10 @@ sound_app.initialize = function() {
     //add the icon that determins where the sounds come from 
     sound_app.addListenMarker();
     
-    //now attach an event when the listen marker loads, 
-    sound_app.updateMusicPlaying(); 
-    
     //and when the listen marker moves
     google.maps.event.addListener(sound_app.listen_marker, 'dragend', sound_app.updateMusicPlaying);
-    
+
+    sound_app.updateMusicPlaying();
 }
 
 sound_app.addMusicMarkers = function() { 
@@ -43,14 +45,14 @@ sound_app.addMusicMarker = function(music_marker){
         url: '/images/music_marker.png',
         size: new google.maps.Size(100, 115),
         origin: new google.maps.Point(0,0),
-        anchor: new google.maps.Point(0, 57)
+        anchor: new google.maps.Point(50, 50)
       }; 
  
     var marker = new google.maps.Marker({
         position: new google.maps.LatLng(music_marker.position.lat, music_marker.position.lng),
         map: sound_app.map,
         icon:image, 
-        title: music_marker.name
+        title: music_marker.name,
     });
     
     return marker;
@@ -80,10 +82,14 @@ sound_app.addListenMarker = function(){
 }
 
 sound_app.updateMusicPlaying = function() { 
+    
     sound_app.calculateNearestMusicMarkers();
-    var sounds_to_play = sound_app.chooseNearestMarkersToPlay(); 
-    $.each(sounds_to_play, function(key,val){ 
-        sound_app.playSound(val.music_marker_index); 
+    sound_app.chooseNearestMarkersToPlay(); 
+    
+    sound_app.stopAllSounds();
+    
+    $.each(sound_app.music_playing_now, function(key,val){ 
+        sound_app.playSound(val.index, val.distance); 
     }); 
 };
 
@@ -125,13 +131,28 @@ sound_app.getPixelDistance = function(a,b){
 } 
 
 sound_app.chooseNearestMarkersToPlay = function () { 
+    sound_app.music_playing_now = []; 
     
+    //if there is a sound so close to the listen marker that we only want to play one peice of music
+    if(sound_app.current_music_distances[0].distance < settings.solo_playback_pixel_radius) { 
+        console.log('solo mode');
+        sound_app.music_playing_now.push(sound_app.current_music_distances[0]) ;
+    }
+    
+    //if we are going to play back multiple music files 
+    else { 
+        console.log('multi mode');
+        $.each(sound_app.current_music_distances, function(key, val){ 
+            if( key < settings.max_simultaneous_playback-1 && val.distance < settings.playback_pixel_radius) { 
+                 sound_app.music_playing_now.push(sound_app.current_music_distances[key]) ;
+            } else { 
+                return false;
+            } 
+       }); 
+    }
 }
 
 
-sound_app.playSound = function(music_marker_index){ 
-    console.log('playing ' + music_marker_index); 
-}
-
+//lets's go! 
 window.onload = sound_app.initialize;
 

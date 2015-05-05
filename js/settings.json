@@ -1,14 +1,19 @@
 settings = { 
     default_center: {lat: 51.498582, lng:-0.069128}, 
     default_zoom: 12,
+    max_simultaneous_playback: 6,
+    playback_pixel_radius: 300,
+    solo_playback_pixel_radius:40, 
     music_markers: [
         {
             position: {lat:51.469955, lng:-0.066974},
-            name: "Bussey Building"
+            name: "Bussey Building",
+            audio_file: "10 Bethnal Green working mens clubTOPS - Way To Be Loved (Official Video).mp3"
         },
         {
             position: {lat:51.494651, lng:-0.05581},
-            name: "Southwark Park"
+            name: "Southwark Park",
+            audio_file: "1 Fabric - Simian Mobile Disco - Cerulean.mp3"
         }
     ]
 
