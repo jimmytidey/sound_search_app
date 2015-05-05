@@ -107,15 +107,15 @@ sound_app.calculateNearestMusicMarkers = function() {
     //now order this array by distance to save time later 
     function sortByDistance(a, b){
         if(a.distance>b.distance) { 
-            return 1 
+            return 1
         } else { 
-            return 0
+            return -1
         } 
         
     }
     
-    sound_app.current_music_distances.sort(sortByDistance);    
-    
+    sound_app.current_music_distances = sound_app.current_music_distances.sort(sortByDistance);    
+    console.log(sound_app.current_music_distances);
 };
 
 sound_app.fromLatLngToPoint = function (latLng, map) {
