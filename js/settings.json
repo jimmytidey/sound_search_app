@@ -1,0 +1,15 @@
+settings = { 
+    default_center: {lat: 51.498582, lng:-0.069128}, 
+    default_zoom: 12,
+    music_markers: [
+        {
+            position: {lat:51.469955, lng:-0.066974},
+            name: "Bussey Building"
+        },
+        {
+            position: [51.494651, -0.05581],
+            name: "Southwark Park"
+        }
+    ]
+
+}
