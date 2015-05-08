@@ -5,8 +5,11 @@ sound_app.music_playing_now = [];
 
 sound_app.initialize = function() {
     
-    sound_app.loadSounds();
-    
+    sound_app.loadSounds(); 
+    $('.close_btn').click(function() { 
+        $('.popup').hide();
+    }); 
+
     // replace "toner" here with "terrain" or "watercolor"
     var layer = "watercolor";
     sound_app.map = new google.maps.Map(document.getElementById("map_container"), {
@@ -43,9 +46,9 @@ sound_app.addMusicMarker = function(music_marker){
 
     var image = {
         url: '/images/music_marker.png',
-        size: new google.maps.Size(100, 115),
+        size: new google.maps.Size(54, 78),
         origin: new google.maps.Point(0,0),
-        anchor: new google.maps.Point(50, 50)
+        anchor: new google.maps.Point(27, 38)
       }; 
  
     var marker = new google.maps.Marker({
@@ -55,6 +58,12 @@ sound_app.addMusicMarker = function(music_marker){
         title: music_marker.name,
     });
     
+    google.maps.event.addListener(marker, 'click', function() {
+        $('.popup').show();
+        $('.popup img').attr("src", "images/venue_images/" + music_marker.popup_image_url);
+
+    });
+
     return marker;
 }
 
@@ -62,9 +71,9 @@ sound_app.addListenMarker = function(){
     
     var image = {
         url: '/images/listen_marker.png',
-        size: new google.maps.Size(100, 113),
+        size: new google.maps.Size(100, 100),
         origin: new google.maps.Point(0,0),
-        anchor: new google.maps.Point(50, 56)
+        anchor: new google.maps.Point(50, 50)
       }; 
  
     var marker = new google.maps.Marker({
@@ -87,9 +96,17 @@ sound_app.updateMusicPlaying = function() {
     sound_app.chooseNearestMarkersToPlay(); 
     
     sound_app.stopAllSounds();
+
+    var image = {
+        url: '/images/music_marker_active.png',
+        size: new google.maps.Size(54, 78),
+        origin: new google.maps.Point(0,0),
+        anchor: new google.maps.Point(27, 38)
+    }; 
     
     $.each(sound_app.music_playing_now, function(key,val){ 
-        sound_app.playSound(val.index, val.distance); 
+        sound_app.playSound(val.index, val.distance);
+        sound_app.music_markers[val.index].setIcon(image);
     }); 
 };
 
@@ -143,7 +160,7 @@ sound_app.chooseNearestMarkersToPlay = function () {
     else { 
         console.log('multi mode');
         $.each(sound_app.current_music_distances, function(key, val){ 
-            if( key < settings.max_simultaneous_playback-1 && val.distance < settings.playback_pixel_radius) { 
+            if( key < settings.max_simultaneous_playback && val.distance < settings.playback_pixel_radius) { 
                  sound_app.music_playing_now.push(sound_app.current_music_distances[key]) ;
             } else { 
                 return false;
