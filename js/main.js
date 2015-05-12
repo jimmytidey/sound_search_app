@@ -16,6 +16,10 @@ sound_app.initialize = function() {
         center: new google.maps.LatLng(settings.default_center.lat, settings.default_center.lng),
         zoom: settings.default_zoom,
         mapTypeId: layer,
+        zoomControl: false,
+        streetViewControl:false, 
+        mapTypeControl:false, 
+        panControl:false,
         mapTypeControlOptions: {
             mapTypeIds: [layer]
         }
@@ -88,6 +92,11 @@ sound_app.addListenMarker = function(){
     
     return marker;     
     
+}
+
+sound_app.resetListenMarker = function(){
+    var position = new google.maps.LatLng(settings.default_center.lat, settings.default_center.lng); 
+    sound_app.listen_marker.setPosition(position); 
 }
 
 sound_app.updateMusicPlaying = function() { 
@@ -172,4 +181,19 @@ sound_app.chooseNearestMarkersToPlay = function () {
 
 //lets's go! 
 window.onload = sound_app.initialize;
+
+
+// click events 
+
+$('.logo').click(function(){ 
+    sound_app.resetListenMarker();
+    sound_app.updateMusicPlaying();
+}); 
+
+
+
+
+
+
+
 
