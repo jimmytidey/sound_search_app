@@ -38,7 +38,7 @@ sound_app.initialize = function() {
 
     sound_app.updateMusicPlaying();
     sound_app.addHomeMarker();
-    sound_app.attachDetailsEvents();
+    sound_app.attachEvents();
 }
 
 sound_app.addHomeMarker = function() { 
@@ -101,16 +101,7 @@ sound_app.addMusicMarker = function(music_marker){
     return marker;
 }
 
-sound_app.attachDetailsEvents = function(){ 
-    $(".details").swipe( {
-        //Generic swipe handler for all directions
-        swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-           $('.details').animate({
-               width: "0"
-           });
-        }
-    });
-}
+
 
 sound_app.addListenMarker = function(){
     
@@ -203,7 +194,9 @@ sound_app.chooseNearestMarkersToPlay = function () {
     //if there is a sound so close to the listen marker that we only want to play one peice of music
     if(sound_app.current_music_distances[0].distance < settings.solo_playback_pixel_radius) { 
         console.log('solo mode');
-        sound_app.music_playing_now.push(sound_app.current_music_distances[0]) ;
+        sound_app.music_playing_now.push(sound_app.current_music_distances[0]);
+        
+        sound_app.showDetails(sound_app.current_music_distances[0].index);
     }
     
     //if we are going to play back multiple music files 
@@ -215,8 +208,23 @@ sound_app.chooseNearestMarkersToPlay = function () {
             } else { 
                 return false;
             } 
-       }); 
+        }); 
+        sound_app.hideDetails();
     }
+}
+
+sound_app.showDetails = function(index){ 
+    $('.details img').attr("src", "images/venue_images/" + settings.music_markers[index].details_image_url);
+    $('.details').animate({
+        width: "300"
+    });
+}
+
+sound_app.hideDetails = function(index){ 
+    $('.details img').attr("src", "");
+    $('.details').animate({
+        width: "0"
+    });
 }
 
 
@@ -225,12 +233,21 @@ window.onload = sound_app.initialize;
 
 
 // click events 
-
-$('.logo').click(function(){ 
-    sound_app.resetMap(); 
-    sound_app.resetListenMarker();
-    sound_app.updateMusicPlaying();
-}); 
+sound_app.attachEvents = function(){ 
+    $(".details").swipe( {
+        //Generic swipe handler for all directions
+        swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+            sound_app.hideDetails();
+        }
+    });
+    
+    $('.logo').click(function(){ 
+        sound_app.resetMap(); 
+        sound_app.resetListenMarker();
+        sound_app.updateMusicPlaying();
+        sound_app.hideDetails();
+    });    
+}
 
 
 
