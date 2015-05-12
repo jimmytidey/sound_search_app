@@ -102,11 +102,11 @@ sound_app.addMusicMarker = function(music_marker){
 
 alert('new code!');
 sound_app.attachDetailsEvents = function(){ 
-    $(".details").on("swipe",function(){
-        alert('hi!'); 
-        $('.details').animate({
-            width: "300"
-        });        
+    $(".details").swipe( {
+           //Generic swipe handler for all directions
+           swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+             alert('swipe');
+           }
     });
 }
 
