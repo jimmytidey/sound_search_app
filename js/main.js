@@ -37,7 +37,8 @@ sound_app.initialize = function() {
     google.maps.event.addListener(sound_app.listen_marker, 'dragend', sound_app.updateMusicPlaying);
 
     sound_app.updateMusicPlaying();
-    sound_app.addHomeMarker(); 
+    sound_app.addHomeMarker();
+    sound_app.attachDetailsEvents();
 }
 
 sound_app.addHomeMarker = function() { 
