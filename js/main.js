@@ -100,6 +100,7 @@ sound_app.addMusicMarker = function(music_marker){
     return marker;
 }
 
+alert('new code!');
 sound_app.attachDetailsEvents = function(){ 
     $(".details").on("swipe",function(){
         alert('hi!'); 
