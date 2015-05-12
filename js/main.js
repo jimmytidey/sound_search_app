@@ -100,6 +100,14 @@ sound_app.addMusicMarker = function(music_marker){
     return marker;
 }
 
+sound_app.attachDetailsEvents = function(){ 
+    $(".details").on("swipe",function(){
+        $('.details').animate({
+            width: "300"
+        });        
+    });
+}
+
 sound_app.addListenMarker = function(){
     
     var image = {
