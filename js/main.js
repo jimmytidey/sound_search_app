@@ -102,6 +102,7 @@ sound_app.addMusicMarker = function(music_marker){
 
 sound_app.attachDetailsEvents = function(){ 
     $(".details").on("swipe",function(){
+        alert('hi!'); 
         $('.details').animate({
             width: "300"
         });        
