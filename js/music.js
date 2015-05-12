@@ -52,9 +52,9 @@ sound_app.resetMusicMarkers = function(){
     
     var image = {
         url: '/images/music_marker.png',
-        size: new google.maps.Size(54, 78),
+        size: new google.maps.Size(33, 33),
         origin: new google.maps.Point(0,0),
-        anchor: new google.maps.Point(27, 38)
+        anchor: new google.maps.Point(16, 16)
     }; 
     
     $.each(sound_app.music_markers, function(key,val){ 

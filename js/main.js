@@ -37,6 +37,34 @@ sound_app.initialize = function() {
     google.maps.event.addListener(sound_app.listen_marker, 'dragend', sound_app.updateMusicPlaying);
 
     sound_app.updateMusicPlaying();
+    sound_app.addHomeMarker(); 
+}
+
+sound_app.addHomeMarker = function() { 
+    var image = {
+        url: '/images/home_marker.png',
+        size: new google.maps.Size(70, 61),
+        origin: new google.maps.Point(0,0),
+        anchor: new google.maps.Point(35, 30)
+      }; 
+ 
+    var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(settings.home_marker.lat, settings.home_marker.lng),
+        map: sound_app.map,
+        icon:image, 
+        title: 'home marker', 
+        draggable: false
+    });
+    
+    sound_app.home_marker = marker; 
+    
+    return marker;    
+}
+
+sound_app.resetMap = function() { 
+    var default_center = new google.maps.LatLng(settings.default_center.lat, settings.default_center.lng); 
+    sound_app.map.setCenter(default_center);
+    sound_app.map.setZoom(settings.default_zoom);
 }
 
 sound_app.addMusicMarkers = function() { 
@@ -50,9 +78,9 @@ sound_app.addMusicMarker = function(music_marker){
 
     var image = {
         url: '/images/music_marker.png',
-        size: new google.maps.Size(54, 78),
+        size: new google.maps.Size(33, 33),
         origin: new google.maps.Point(0,0),
-        anchor: new google.maps.Point(27, 38)
+        anchor: new google.maps.Point(16, 16)
       }; 
  
     var marker = new google.maps.Marker({
@@ -63,9 +91,10 @@ sound_app.addMusicMarker = function(music_marker){
     });
     
     google.maps.event.addListener(marker, 'click', function() {
-        $('.popup').show();
-        $('.popup img').attr("src", "images/venue_images/" + music_marker.popup_image_url);
-
+        $('.details img').attr("src", "images/venue_images/" + music_marker.details_image_url);
+        $('.details').animate({
+            width: "300"
+        });
     });
 
     return marker;
@@ -75,9 +104,9 @@ sound_app.addListenMarker = function(){
     
     var image = {
         url: '/images/listen_marker.png',
-        size: new google.maps.Size(100, 100),
+        size: new google.maps.Size(50, 68),
         origin: new google.maps.Point(0,0),
-        anchor: new google.maps.Point(50, 50)
+        anchor: new google.maps.Point(25, 34)
       }; 
  
     var marker = new google.maps.Marker({
@@ -108,9 +137,9 @@ sound_app.updateMusicPlaying = function() {
 
     var image = {
         url: '/images/music_marker_active.png',
-        size: new google.maps.Size(54, 78),
+        size: new google.maps.Size(33, 33),
         origin: new google.maps.Point(0,0),
-        anchor: new google.maps.Point(27, 38)
+        anchor: new google.maps.Point(16, 16)
     }; 
     
     $.each(sound_app.music_playing_now, function(key,val){ 
@@ -186,6 +215,7 @@ window.onload = sound_app.initialize;
 // click events 
 
 $('.logo').click(function(){ 
+    sound_app.resetMap(); 
     sound_app.resetListenMarker();
     sound_app.updateMusicPlaying();
 }); 

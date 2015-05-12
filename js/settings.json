@@ -1,6 +1,7 @@
 settings = { 
-    default_center: {lat: 51.498582, lng:-0.069128}, 
-    default_zoom: 12,
+    default_center: {lat: 51.515582, lng:-0.1281},
+    home_marker: {lat: 51.499902, lng:-0.077942}, 
+    default_zoom: 13,
     max_simultaneous_playback: 3,
     playback_pixel_radius: 250,
     solo_playback_pixel_radius:30, 
@@ -9,110 +10,110 @@ settings = {
             position: {lat:51.519542, lng:-0.102809},
             name: "1 Fabric",
             audio_file: "1 Fabric - Simian Mobile Disco - Cerulean.mp3",
-            popup_image_url: "fabric.png"
+            details_image_url: "fabric.png"
         },
         {
             position: {lat:51.551584, lng:-0.075325},
             name: "2 Birthdays",
             audio_file: "2 Birthdays - Robb Bank$- Counting.mp3",
-            popup_image_url: ""
+            details_image_url: "details_2.png"
         },
         {
             position: {lat:51.541989, lng:-0.14736},
             name: "3 Proud Camden",
             audio_file: "3 Proud Camden -Artful Dodger -Movin' Too Fast [HQ MV + Lyrics].mp3",
-            popup_image_url: "proud camden.png"
+            details_image_url: "proud camden.png"
         },
         {
             position: {lat:51.49765, lng:-0.099209},
             name: "4 Ministry of Sound",
             audio_file: "4 Ministry of Sound - Timmy Trumpet - Nightmare (Original Mix).mp3",
-            popup_image_url: ""
+            details_image_url: ""
         },
         {
             position: {lat:51.501267, lng:-0.17754},
             name: "5 The Albert Hall",
             audio_file: "5 Albert Hall Eric Clapton- Wonderful Tonight (HQ).mp3",
-            popup_image_url: "albert hall.png"
+            details_image_url: "albert hall.png"
         },
         {
             position: {lat:51.469856, lng:-0.067996},
             name: "6 Bussey Building",
             audio_file: "6 Bussey Building The Brothers Johnson - I'll Be Good To You 1976.mp3",
-            popup_image_url: "Bussey building.png"
+            details_image_url: "Bussey building.png"
         },
         {
             position: {lat:51.530576, lng:-0.120704},
             name: "7 The Scala",
             audio_file: "7 Scala - Dog Is Dead - Teenage Daughter (Official Video).mp3",
-            popup_image_url: "SCALA.png"
+            details_image_url: "SCALA.png"
         }
         ,
         {
             position: {lat:51.505776, lng:-0.116825},
             name: "8 Royal Festival Hall",
             audio_file: "8 Royal Festival Hall-Philharmonic Orchestra Symphony No.5.mp3",
-            popup_image_url: ""
+            details_image_url: ""
         },
         {
             position: {lat:51.513283, lng:51.513283},
             name: "9 Royal Opera House",
             audio_file: "9 Royal Opera House -Król Roger - Mariusz Treliński - NINATEKA.PL - Opera.mp3",
-            popup_image_url: "royal Opera house.png"
+            details_image_url: "royal Opera house.png"
         },
         {
             position: {lat:51.527081, lng:-0.063355},
             name: "10 Bethnal Green Working Men's Club",
             audio_file: "10 Bethnal Green working mens clubTOPS - Way To Be Loved (Official Video).mp3",
-            popup_image_url: "bethnalgreenworkingmens.png"
+            details_image_url: "bethnalgreenworkingmens.png"
         },
         {
             position: {lat:51.519812, lng:-0.093919},
             name: "11 Barbican",
             audio_file: "11 Barbican - Chilingirian Quartet Haydn Opus 76 No 3.mp3",
-            popup_image_url: "the barbican.png"
+            details_image_url: "the barbican.png"
         },
         {
             position: {lat:51.494747, lng:-0.098768},
             name: "12 Corronet Theatre",
             audio_file: "12 Coronet Theatre - The Maccabees - Toothpaste Kisses.mp3",
-            popup_image_url: ""
+            details_image_url: ""
         },
         {
             position: {lat:51.543041, lng:-0.151312},
             name: "13 The Roundhouse",
             audio_file: "13 RoundHouse - Tyler The Creator - Yonkers.mp3",
-            popup_image_url: "Roundhouse.png"
+            details_image_url: "Roundhouse.png"
         },
         {
             position: {lat:51.53858, lng:-0.143331},
             name: "14 Jazz Cafe Camden",
             audio_file: "14 Jazz Cafe Camden - Jocelyn Brown - Somebody Else_s guy.mp3",
-            popup_image_url: ""
+            details_image_url: ""
         },
         {
             position: {lat:51.503515, lng:-0.224423},
             name: "15 Shepards Bush Empire",
             audio_file: "15 Shepherds Bush Empire Mary Black - Fields Of Gold.mp3",
-            popup_image_url: "shepherds bush.png"
+            details_image_url: "shepherds bush.png"
         },
         {
             position: {lat:51.510612, lng:-0.066964},
             name: "16 Wiltons music hall",
             audio_file: "16 Wiltons music hall Vortex Cannon.mp3",
-            popup_image_url: ""
+            details_image_url: ""
         },
         {
             position: {lat:51.525523, lng:-0.085117},
             name: "17 XOYO",
             audio_file: "17 XOYO Toddla T & Shola Ama - Alive.mp3",
-            popup_image_url: "XOYO.png"
+            details_image_url: "XOYO.png"
         }, 
         {
             position: {lat:51.513406, lng:-0.131715},
             name: "18 Ronnie scotts",
             audio_file: "18 Ronnie Scotts - Lalah Hathaway - Forever, For Always, For Love.mp3",
-            popup_image_url: "ronnie scots.png"
+            details_image_url: "ronnie scots.png"
         }                            
     ]
 

@@ -14,15 +14,17 @@ html, body {
     border:1px solid black;
 }
 
-.popup { 
-	display:none;
-	width:1024;
-	height:768;
-	margin-left:-512px;
-	left:50%;
+.details { 
+	width:0px;
+	height:100%;
+	right:0px;
 	position:absolute; 
 	top:0px;
+	background-color:rgba(28, 38, 116, 0.5);
 }
+.details img { 
+    padding-top:150px;
+} 
 
 .close_btn { 
 	width: 50px;
