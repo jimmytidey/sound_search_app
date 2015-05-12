@@ -101,13 +101,14 @@ sound_app.addMusicMarker = function(music_marker){
     return marker;
 }
 
-alert('new code!');
 sound_app.attachDetailsEvents = function(){ 
     $(".details").swipe( {
-           //Generic swipe handler for all directions
-           swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-             alert('swipe');
-           }
+        //Generic swipe handler for all directions
+        swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+           $('.details').animate({
+               width: "0"
+           });
+        }
     });
 }
 
